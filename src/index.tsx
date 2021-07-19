@@ -2,11 +2,24 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import { HashRouter } from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
+import { ThemeProvider, createTheme } from "@material-ui/core/styles";
+
+
+const configTheme = createTheme({
+  typography: {
+    fontFamily: `"Kanit", sans-serif`,
+  },
+});
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <HashRouter>
+      <ThemeProvider theme={configTheme}>
+           <App />
+      </ThemeProvider>
+    </HashRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );

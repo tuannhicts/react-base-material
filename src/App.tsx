@@ -1,24 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
+import {
+  Switch,
+  Route,
+} from "react-router-dom";
 import './App.css';
-
+import Header from './components/Header/Header';
+import Home from './theme/Home/Home';
+import Dashboard from '@material-ui/icons/Dashboard';
+import Extending from './theme/Extending/Extending';
+import PageOne from './theme/Extending/PageOne/PageOne';
+import PageTwo from './theme/Extending/PageTwo/PageTwo';
+import Swap from './theme/Swap/Swap';
+import {RedirectToHome, RedirectToPathHome} from './components/Redirect/Redirect';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <Header/>
+     <Switch> 
+             
+              <Route exact strict path="/send" component={RedirectToPathHome} />
+              <Route exact strict path="/home" component={Home} />
+              <Route exact strict path="/home/:outputCurrency" component={RedirectToHome} />
+
+
+              <Route exact strict path="/swap" component={Swap} />
+              <Route exact strict path="/dashboard" component={Dashboard} />
+              <Route exact strict path="/extending" component={Extending} />
+              <Route exact strict path="/extending/page-1" component={PageOne} />
+              <Route exact strict path="/extending/page-2" component={PageTwo} />
+
+              <Route  component={RedirectToHome} />
+      </Switch>
     </div>
   );
 }
