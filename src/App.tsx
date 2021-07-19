@@ -12,16 +12,18 @@ import PageOne from './theme/Extending/PageOne/PageOne';
 import PageTwo from './theme/Extending/PageTwo/PageTwo';
 import Swap from './theme/Swap/Swap';
 import {RedirectToHome, RedirectToPathHome} from './components/Redirect/Redirect';
-function App() {
+import './i18n';
+import ModalSelectToken from './components/Modal/ModalSelectToken';
+const App:React.FC = () => {
   return (
     <div className="App">
      <Header/>
+     <ModalSelectToken/>
      <Switch> 
              
               <Route exact strict path="/send" component={RedirectToPathHome} />
               <Route exact strict path="/home" component={Home} />
               <Route exact strict path="/home/:outputCurrency" component={RedirectToHome} />
-
 
               <Route exact strict path="/swap" component={Swap} />
               <Route exact strict path="/dashboard" component={Dashboard} />

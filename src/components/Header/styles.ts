@@ -3,7 +3,6 @@ import {
   makeStyles,
   Theme
 } from "@material-ui/core/styles";
-import transitions from "@material-ui/core/styles/transitions";
 
 const drawerWidth = 240;
 
@@ -29,7 +28,7 @@ const drawerWidth = 240;
       })
     },
     menuButton: {
-      marginRight: 36,
+      marginRight: 30,
       [theme.breakpoints.down(377)]: {
         marginRight:10,
       },
@@ -91,7 +90,7 @@ const drawerWidth = 240;
     },
     logoAccount:{},
     normal:{
-      paddingLeft: theme.spacing(2),
+      paddingLeft: theme.spacing(2.6),
     },
     titleName:{
       [theme.breakpoints.down(479)]: {
@@ -102,13 +101,11 @@ const drawerWidth = 240;
       paddingLeft: theme.spacing(4),
     },
     active: {
-      backgroundColor: "#F4F4F4",
+      backgroundColor: "#B5CDA3",
       borderLeft:'2px solid #66893c',
     },
     toolBarHeader:{
-    //   display:'flex',
-    //   justifyContent:'space-between',
-    //   alignItems:'flex-start',
+   
     }
   })
 );

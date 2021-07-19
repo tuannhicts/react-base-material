@@ -17,7 +17,9 @@ ReactDOM.render(
   <React.StrictMode>
     <HashRouter>
       <ThemeProvider theme={configTheme}>
-           <App />
+      <React.Suspense fallback={null}>
+      <App />
+    </React.Suspense>
       </ThemeProvider>
     </HashRouter>
   </React.StrictMode>,

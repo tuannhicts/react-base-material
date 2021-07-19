@@ -1,4 +1,4 @@
-import React,{useState, FC, useCallback, useRef, useEffect} from "react";
+import React,{useState, useCallback, useRef, useEffect} from "react";
 import clsx from "clsx";
 import {
   Drawer,
@@ -12,8 +12,7 @@ import {
   ListItemIcon,
   Collapse,
   ListItemText,
-  Avatar,
-  Container} from "@material-ui/core";
+} from "@material-ui/core";
 import CssBaseline from '@material-ui/core/CssBaseline'
 import MenuIcon from "@material-ui/icons/Menu";
 import MenuOpenIcon from "@material-ui/icons/MenuOpen";
@@ -27,16 +26,16 @@ import SwapVertIcon from '@material-ui/icons/SwapVert';
 import useStyles from './styles';
 import {useHistory, useLocation} from 'react-router-dom';
 import logoIcon from  '../../assets/images/ham.png';
-import logoUser from '../../assets/images/account.png';
 import Menu from './Menu/Menu';
-
-
+import {useTranslation} from 'react-i18next';
 interface IDataDrawer{
   name: string;
   route ?: string;
   childs ?:IDataDrawer[];
-  icon: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  icon:any;
 }
+type AnyEvent = MouseEvent | TouchEvent
 
  const Header: React.FC = () => {
   const classes = useStyles();
@@ -44,11 +43,7 @@ interface IDataDrawer{
   const history = useHistory();
   const [open, setOpen] = useState(false);
   const [tradeExtend, setTradeExtend] = useState(false);
-  const [isClickOutSide, setIsClickOutSide] = useState(false);
-
-  
-
-
+  const [t] = useTranslation();
   console.log(location.pathname)
   const myRef = useRef<HTMLDivElement>(null);
   const dataDrawer : IDataDrawer[] = [
@@ -88,14 +83,13 @@ interface IDataDrawer{
   ]
 /// handle click outside
   useEffect(()=>{
-
-    const handleClick = (event: any) =>{
-      if(!myRef.current?.contains(event.target)){
+    const handleClick = (event: AnyEvent) =>{
+      if(!myRef.current?.contains(event.target as Node)){
         setOpen(false);
         setTradeExtend(false);
       }
     }
-    document.addEventListener("mousedown", handleClick);
+      document.addEventListener("mousedown", handleClick);
     return ()=>{
       document.removeEventListener("mousedown", handleClick);
     }
@@ -108,12 +102,10 @@ interface IDataDrawer{
     }
   }, [open]);
 
-  const handleDrawerClose = useCallback(()=>{
-    setOpen(false)
-  },[open]);
+  // const handleDrawerClose = useCallback(()=>{
+  //   setOpen(false)
+  // },[open]);
  
-
-
   const onSelectDrawerItem = useCallback(
     (item: IDataDrawer) => {
       if (item.route) {
@@ -154,7 +146,7 @@ interface IDataDrawer{
               </IconButton>
               <img src={logoIcon} className={classes.logoIcon}/>
               <Typography variant="h6" noWrap className={classes.titleName}>
-                Title Name
+                {t('Title name')}
               </Typography>  
              <Menu/>
        </Toolbar>      
@@ -172,7 +164,6 @@ interface IDataDrawer{
           })
         }}
       >
-    
         <div className={classes.toolbar}>
         </div>
         <Divider />
@@ -218,9 +209,7 @@ interface IDataDrawer{
                 )}
             </>
           ))}
-        </List>
- 
-        
+        </List>       
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />

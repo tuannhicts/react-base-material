@@ -1,18 +1,20 @@
 import React from 'react'
-import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
-import TuneIcon from '@material-ui/icons/Tune';
-import RestoreIcon from '@material-ui/icons/Restore';
-import { Button, Input, InputBase, Typography } from '@material-ui/core';
-import { makeStyles, createStyles, Theme } from "@material-ui/core";
+import { Button,InputBase, Typography } from '@material-ui/core';
+import { makeStyles, createStyles} from "@material-ui/core";
+import { useTranslation } from 'react-i18next';
 import ham from '../../assets/images/ham.png';
-const InputComponents = () => {
+
+
+
+const InputComponents:React.FC = () => {
   const classes = useStyles();
+  const [t] = useTranslation();
   return (
     <div className={classes.inputGroup}>
       <div className={classes.mainInput}>
         <div className={classes.headingInput}>
-          <Typography>From</Typography>
-          <Typography>Balance:</Typography>
+          <Typography>{t("From")}</Typography>
+          <Typography>{t("Balance")}:</Typography>
         </div>
       <div className={classes.contentInput}>
         <InputBase
@@ -24,7 +26,7 @@ const InputComponents = () => {
               />
         <Button variant="contained" className={classes.btnSelect}>
             <img src={ham} alt="" className={classes.avatarCoin}/>
-            <Typography>Select</Typography>
+            <Typography>{t("select")}</Typography>
         </Button>
         </div>
       </div>
@@ -32,8 +34,9 @@ const InputComponents = () => {
   )
 }
 
-export default InputComponents
-const useStyles = makeStyles((theme:Theme) => createStyles({
+export default InputComponents;
+
+const useStyles = makeStyles(() => createStyles({
   // input
   inputGroup:{
     backgroundColor:'#FFDADA',

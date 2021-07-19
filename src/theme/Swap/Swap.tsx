@@ -3,10 +3,10 @@ import useStyles from './styles';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import TuneIcon from '@material-ui/icons/Tune';
 import RestoreIcon from '@material-ui/icons/Restore';
-import { Button, Input, InputBase, Typography } from '@material-ui/core';
-import ham from '../../assets/images/ham.png';
+import { Button, Typography } from '@material-ui/core';
+
 import InputComponents from '../../components/Input/InputComponents';
-const Swap = () => {
+const Swap:React.FC = () => {
   const classes = useStyles();
   return (
     <main className={classes.container}>

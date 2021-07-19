@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Extending = () => {
+const Extending:React.FC = () => {
   return (
     <div>
       <h2>Extending Component</h2>

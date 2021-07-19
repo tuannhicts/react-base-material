@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     display:'flex',
     flex:1,
     justifyContent:'flex-end',
-    alignItems:'flex-start',
+    alignItems:'center',
     [theme.breakpoints.down(376)]: {
       justifyContent:'flex-start',
       
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
   btnConnect:{
     borderRadius:20,
     marginRight:10,
-    backgroundColor:'yellow',
+    backgroundColor:'#ffff',
   },
   logoIcon:{
     
