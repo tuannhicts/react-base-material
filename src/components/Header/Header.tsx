@@ -89,7 +89,7 @@ interface IDataDrawer{
 /// handle click outside
   useEffect(()=>{
 
-    let handleClick = (event: any) =>{
+    const handleClick = (event: any) =>{
       if(!myRef.current?.contains(event.target)){
         setOpen(false);
         setTradeExtend(false);
