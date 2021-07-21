@@ -15,7 +15,7 @@ import PageTwo from './theme/Extending/PageTwo/PageTwo';
 import Swap from './theme/Swap/Swap';
 import {RedirectToHome, RedirectToPathHome} from './components/Redirect/Redirect';
 import './i18n';
-import ModalSelectToken from './components/Modal/ModalSelectToken';
+// import ModalSelectToken from './components/Modal/ModalSelectToken';
 import SnackBar from './components/SnackBar/SnackBar';
 const App:React.FC = () => {
 
@@ -29,7 +29,7 @@ const App:React.FC = () => {
   return (
     <div className="App">
      <Header/>
-     <ModalSelectToken/>
+     {/* <ModalSelectToken/> */}
      <div>{popups}</div>
 
      <Switch> 

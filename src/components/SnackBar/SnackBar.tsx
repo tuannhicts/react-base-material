@@ -17,13 +17,12 @@ const SnackBar:React.FC = () => {
   return (
     <div className={classes.root}>
       <Snackbar 
-      open={show} autoHideDuration={1000}
+      open={show} autoHideDuration={2000} 
       onClose={handleClose}
       anchorOrigin={{ vertical: 'top', horizontal: 'right' }} 
       className={classes.snackBar}  
       key={keyOfMessage}
       >
-       
          <Alert onClose={handleClose} severity={messageType} >
          {message}
         </Alert>

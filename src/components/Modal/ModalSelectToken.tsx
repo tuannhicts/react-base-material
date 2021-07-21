@@ -8,44 +8,37 @@ import CloseIcon from '@material-ui/icons/Close';
 import coinImage  from '../../assets/icons/coin.png';
 import { useTranslation } from 'react-i18next';
 
-const ModalSelectToken: React.FC = () => {
+interface Props{
+  open: boolean;
+  handleClose: () => void;
+}
+const ModalSelectToken: FC<Props> = ({open, handleClose}) => {
   const classes = useStyles();
   const [t] = useTranslation();
   const defaultValue = "USDT";
-  const [openModal, setOpenModal] = useState<boolean>(false);
-  const handleCloseModal = () =>{
-    setOpenModal(false);
-  };
-  const handleOpenModal = () =>{
-    setOpenModal(true);
-  }
-  
   return (
     <div>
-       <button type="button" onClick={handleOpenModal}>
-        Click open modal select token
-      </button>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
         className={classes.modal}
-        open={openModal}
-        onClose={handleCloseModal}
+        open={open}
+        onClose={handleClose}
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
           timeout: 500,
         }}
       >
-        <Fade in={openModal}>
+        <Fade in={open}>
           <div className={classes.paper}>
             <div className={classes.container}>
                   <div className={classes.heading}>
                       <Typography className={classes.title}>{t('Select a token')}</Typography>
-                      <CloseIcon className={classes.closeIcon} onClick={handleCloseModal}/>
+                      <CloseIcon className={classes.closeIcon} onClick={handleClose}/>
                   </div>
-                  <div className={classes.content}>
-                      <div className={classes.token}>
+                  <div className={classes.content} >
+                      <div className={classes.token} >
                         <img src={coinImage} className={classes.coinImage} />
                         <Typography className={classes.coinName}>{defaultValue}</Typography>
                       </div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState, useCallback} from 'react';
 import useStyles from './styles';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import TuneIcon from '@material-ui/icons/Tune';
@@ -7,15 +7,9 @@ import { Button, Typography } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import InputComponents from '../../components/Input/InputComponents';
 
-interface Props {
-  open:boolean;
-  handleClose:() => void;
-
-}
-const Swap:React.FC<Props> = ({open, handleClose}) => {
+const Swap:React.FC = () => {
   const classes = useStyles();
   const [t] = useTranslation();
-  
   return (
     <main className={classes.container}>
       <div className={classes.content}>
@@ -28,10 +22,8 @@ const Swap:React.FC<Props> = ({open, handleClose}) => {
                   <RestoreIcon className={classes.btnRestore}/>
               </div>
           </div>
-         <InputComponents/>
-        
+         <InputComponents />
             <ArrowDownwardIcon className={classes.iconBottom}/>
-    
          <InputComponents/>
 
          <div className={classes.groupButton}>

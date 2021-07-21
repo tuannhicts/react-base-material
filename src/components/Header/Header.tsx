@@ -32,7 +32,6 @@ interface IDataDrawer{
   name: string;
   route ?: string;
   childs ?:IDataDrawer[];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   icon:any;
 }
 type AnyEvent = MouseEvent | TouchEvent
