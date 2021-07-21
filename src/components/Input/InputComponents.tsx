@@ -1,14 +1,29 @@
-import React from 'react'
+import React,{useCallback ,useState} from 'react'
 import { Button,InputBase, Typography } from '@material-ui/core';
 import { makeStyles, createStyles} from "@material-ui/core";
 import { useTranslation } from 'react-i18next';
 import ham from '../../assets/images/ham.png';
+import {useDispatch} from 'react-redux';
+import {showSnackBar,resetSnackBar} from '../../redux/actions/app.action';
 
-
-
-const InputComponents:React.FC = () => {
+const InputComponents: React.FC  = () => {
   const classes = useStyles();
   const [t] = useTranslation();
+  const dispatch = useDispatch();
+  
+  // check input length 
+  const getValueInput = useCallback((even:any)=>{
+    const valueInput = (even.target.value);
+    if(valueInput.length < 4){
+      dispatch(
+        showSnackBar({
+          message:"Nhập tối thiểu ít nhất 4 chữ số",
+          type:'error',
+        })
+      )
+    }
+  },[])
+
   return (
     <div className={classes.inputGroup}>
       <div className={classes.mainInput}>
@@ -18,13 +33,14 @@ const InputComponents:React.FC = () => {
         </div>
       <div className={classes.contentInput}>
         <InputBase
+            onChange={getValueInput}
             type="number"
             className={classes.textField}
             inputProps={{
             className: classes.input
                 }}
               />
-        <Button variant="contained" className={classes.btnSelect}>
+        <Button variant="contained" className={classes.btnSelect}  >
             <img src={ham} alt="" className={classes.avatarCoin}/>
             <Typography>{t("select")}</Typography>
         </Button>

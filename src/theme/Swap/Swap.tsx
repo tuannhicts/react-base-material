@@ -4,16 +4,24 @@ import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import TuneIcon from '@material-ui/icons/Tune';
 import RestoreIcon from '@material-ui/icons/Restore';
 import { Button, Typography } from '@material-ui/core';
-
+import { useTranslation } from 'react-i18next';
 import InputComponents from '../../components/Input/InputComponents';
-const Swap:React.FC = () => {
+
+interface Props {
+  open:boolean;
+  handleClose:() => void;
+
+}
+const Swap:React.FC<Props> = ({open, handleClose}) => {
   const classes = useStyles();
+  const [t] = useTranslation();
+  
   return (
     <main className={classes.container}>
       <div className={classes.content}>
           <div className={classes.header}>
               <Typography className={classes.headerName}>
-                    Title Name
+                    {t('Exchange')}
               </Typography>
               <div className={classes.btn}>
                   <TuneIcon className={classes.btnTuneIcon}/>
@@ -27,8 +35,8 @@ const Swap:React.FC = () => {
          <InputComponents/>
 
          <div className={classes.groupButton}>
-           <Button variant="contained" className={classes.btnSwap}>Swap</Button>
-           <Button variant="contained" className={classes.btnExchange}>Exchange</Button>
+           <Button variant="contained" className={classes.btnSwap}>{t('Swap')}</Button>
+           <Button variant="contained" className={classes.btnExchange}>{t('Exchange')}</Button>
          </div>
       </div>
     </main>

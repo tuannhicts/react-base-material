@@ -5,22 +5,27 @@ import App from './App';
 import { HashRouter } from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
 import { ThemeProvider, createTheme } from "@material-ui/core/styles";
-
+// STORE REDUX
+import { configureStore } from './redux/configure-store';
+import {Provider} from 'react-redux';
 
 const configTheme = createTheme({
   typography: {
     fontFamily: `"Kanit", sans-serif`,
   },
 });
+const reduxStore = configureStore();
 
 ReactDOM.render(
   <React.StrictMode>
     <HashRouter>
-      <ThemeProvider theme={configTheme}>
       <React.Suspense fallback={null}>
-      <App />
+        <Provider store={reduxStore}>
+            <ThemeProvider theme={configTheme}>
+                <App />
+            </ThemeProvider>
+        </Provider>
     </React.Suspense>
-      </ThemeProvider>
     </HashRouter>
   </React.StrictMode>,
   document.getElementById('root')

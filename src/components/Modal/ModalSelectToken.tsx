@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{FC, useState} from 'react'
 import { makeStyles, createStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
@@ -6,44 +6,43 @@ import Fade from '@material-ui/core/Fade';
 import { Typography} from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import coinImage  from '../../assets/icons/coin.png';
-
-
+import { useTranslation } from 'react-i18next';
 
 const ModalSelectToken: React.FC = () => {
   const classes = useStyles();
-  const [open, setOpen] = useState(false);
+  const [t] = useTranslation();
   const defaultValue = "USDT";
-  const handleOpen = () => {
-    setOpen(true);
+  const [openModal, setOpenModal] = useState<boolean>(false);
+  const handleCloseModal = () =>{
+    setOpenModal(false);
   };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
+  const handleOpenModal = () =>{
+    setOpenModal(true);
+  }
+  
   return (
     <div>
-       <button type="button" onClick={handleOpen}>
+       <button type="button" onClick={handleOpenModal}>
         Click open modal select token
       </button>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
         className={classes.modal}
-        open={open}
-        onClose={handleClose}
+        open={openModal}
+        onClose={handleCloseModal}
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
           timeout: 500,
         }}
       >
-        <Fade in={open}>
+        <Fade in={openModal}>
           <div className={classes.paper}>
             <div className={classes.container}>
                   <div className={classes.heading}>
-                      <Typography className={classes.title}>Select a token</Typography>
-                      <CloseIcon className={classes.closeIcon} onClick={handleClose}/>
+                      <Typography className={classes.title}>{t('Select a token')}</Typography>
+                      <CloseIcon className={classes.closeIcon} onClick={handleCloseModal}/>
                   </div>
                   <div className={classes.content}>
                       <div className={classes.token}>
@@ -60,6 +59,7 @@ const ModalSelectToken: React.FC = () => {
 }
 
 export default ModalSelectToken
+
 const useStyles = makeStyles(() =>
   createStyles({
     modal: {

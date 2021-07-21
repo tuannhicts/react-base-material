@@ -2,5 +2,7 @@
   "Title name": "Title name ",
   "select":"Select",
   "From":"From",
-  "Balance":"Balance"
+  "Balance":"Balance",
+  "Exchange":"Exchange",
+  "Select a token":"Select a token"
 }
